@@ -1,26 +1,28 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
-import './App.css'
-import { RootLayout } from './assets/pages/Root';
-import { HomePage } from './assets/pages/screens/Home'
-
+import "./App.css";
+import { RootLayout } from "./pages/Root";
+import { HomePage } from "./pages/screens/Home";
+import { AuthPage } from "./pages/screens/Authentication";
+import UserContextProvider from "./store/user-context";
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <RootLayout />,
     children: [
-      {index: true, element: <HomePage />},
-
-    ]
-  }
+      { index: true, element: <HomePage /> },
+      { path: "auth", element: <AuthPage /> },
+    ],
+  },
 ]);
 
 function App() {
-  
   return (
-    <RouterProvider router = {router} />
-  )
+    <UserContextProvider>
+      <RouterProvider router={router} />
+    </UserContextProvider>
+  );
 }
 
-export default App
+export default App;
