@@ -1,11 +1,10 @@
 import { useRef, useState, useContext } from 'react';
 import { useNavigate } from "react-router-dom";
 
-import { authFormStyles } from '../../styles/authFormStyles';
-import { UserContext } from '../../store/user-context';
-
+import { authFormStyles } from '../../styles/library-styles';
+import { DataContext } from '../../store/data-context';
 const LoginForm: React.FC<{ onSignup: () => void }> = (props) => {
-  const userCtx = useContext(UserContext);
+  const dataCtx = useContext(DataContext);
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
 
@@ -19,7 +18,7 @@ const LoginForm: React.FC<{ onSignup: () => void }> = (props) => {
     const email = emailRef.current!.value;
     const password = passwordRef.current!.value;
 
-    const success = userCtx.login?.(email, password);
+    const success = dataCtx.login?.(email, password);
 
     if (!success) {
       setLoginError(true);

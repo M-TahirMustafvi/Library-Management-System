@@ -1,10 +1,9 @@
 import { useState, useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { Bars3Icon, XMarkIcon, ChevronDownIcon } from '@heroicons/react/24/solid';
-import { UserContext } from '../store/user-context';
-
+import { DataContext } from '../store/data-context';
 export function MainNavigation() {
-  const userCtx = useContext(UserContext);
+  const dataCtx = useContext(DataContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
@@ -39,7 +38,7 @@ export function MainNavigation() {
           <li><NavLink to="/members" className={({ isActive }) => isActive ? 'text-blue-400' : ''}>Members</NavLink></li>
 
           <li className="relative">
-            {!userCtx.user.email ? (
+            {!dataCtx.user.email ? (
               <NavLink
                 to="/auth"
                 className={({ isActive }) => (isActive ? 'text-blue-400' : '')}
@@ -55,9 +54,9 @@ export function MainNavigation() {
                 </button>
                 {isDropdownOpen && (
                   <div className="absolute right-0 mt-2 w-48 bg-gray-800 text-white rounded shadow-lg py-2 z-50">
-                    <p className="px-4 py-2 text-sm font-medium border-b border-gray-200">{userCtx.user.email}</p>
+                    <p className="px-4 py-2 text-sm font-medium border-b border-gray-200">{dataCtx.user.email}</p>
                     <button
-                      onClick={userCtx.logout}
+                      onClick={dataCtx.logout}
                       className="w-full text-left px-4 py-2 hover:bg-gray-900 cursor-pointer"
                     >
                       Logout

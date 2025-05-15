@@ -4,8 +4,9 @@ import "./App.css";
 import { RootLayout } from "./pages/Root";
 import { HomePage } from "./pages/screens/Home";
 import { AuthPage } from "./pages/screens/Authentication";
-import UserContextProvider from "./store/user-context";
-
+import DataContextProvider from "./store/data-context";
+import Book from "./pages/screens/Books";
+import Requests from "./pages/screens/Requests";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -13,15 +14,17 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <HomePage /> },
       { path: "auth", element: <AuthPage /> },
+      {path: "books", element: <Book />},
+      {path: "requests", element: <Requests />},
     ],
   },
 ]);
 
 function App() {
   return (
-    <UserContextProvider>
+    <DataContextProvider>
       <RouterProvider router={router} />
-    </UserContextProvider>
+    </DataContextProvider>
   );
 }
 

@@ -2,12 +2,12 @@ import { useState, useContext } from "react";
 
 import SignupForm from "../../components/Auth/Signup";
 import LoginForm from "../../components/Auth/Login";
-import { UserContext } from "../../store/user-context";
+import { DataContext } from "../../store/data-context";
 import { Navigate } from "react-router-dom";
 
 export function AuthPage() {
     const [isLogin, setIsLogin] = useState(true);
-    const userCtx = useContext(UserContext);
+    const dataCtx = useContext(DataContext);
 
     function toggleAuthMode() {
         setIsLogin((prev) => !prev);
@@ -15,7 +15,7 @@ export function AuthPage() {
 
     return (
         <>
-            {!userCtx.user.email ? (
+            {!dataCtx.user.email ? (
                 isLogin ? (
                     <SignupForm onLogin={toggleAuthMode} />
                 ) : (
