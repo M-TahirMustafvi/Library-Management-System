@@ -2,6 +2,7 @@ import { useContext } from "react";
 import Admin from "../../components/Books/Admin";
 import Reader from "../../components/Books/Reader";
 import { DataContext } from "../../store/data-context";
+import Librarian from "../../components/Books/Librarian";
 
 
 export default function Book() {
@@ -10,7 +11,8 @@ export default function Book() {
 
   return (
     <>
-      {((role === "admin" || role === "librarian" ) && <Admin />) ||
+      {((role === "admin") && <Admin />) ||
+        (role === "librarian" && <Librarian />) ||
         (role === "reader" && <Reader />) || <p>Please Sign in first.</p>}
     </>
   );

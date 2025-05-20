@@ -11,7 +11,7 @@ export default function Admin() {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredBooks, setFilteredBooks] = useState<Books[]>(books);
   const [openAccordion, setOpenAccordion] = useState<string | null>(null);
-  const [editingBook, setEditingBook] = useState<Books | null | undefined>(null); // undefined = add mode
+  const [editingBook, setEditingBook] = useState<Books | null | undefined>(null);
 
   useEffect(() => {
     const term = searchTerm.toLowerCase().trim();

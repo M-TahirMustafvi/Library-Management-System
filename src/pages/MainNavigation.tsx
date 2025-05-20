@@ -34,8 +34,8 @@ export function MainNavigation() {
           <li><NavLink to="/" className={({ isActive }) => isActive ? 'text-blue-400' : ''}>Home</NavLink></li>
           <li><NavLink to="/books" className={({ isActive }) => isActive ? 'text-blue-400' : ''}>Books</NavLink></li>
           <li><NavLink to="/requests" className={({ isActive }) => isActive ? 'text-blue-400' : ''}>Requests</NavLink></li>
-          <li><NavLink to="/libraries" className={({ isActive }) => isActive ? 'text-blue-400' : ''}>Libraries</NavLink></li>
-          <li><NavLink to="/members" className={({ isActive }) => isActive ? 'text-blue-400' : ''}>Members</NavLink></li>
+         { dataCtx.user.role === "admin" && <li><NavLink to="/libraries" className={({ isActive }) => isActive ? 'text-blue-400' : ''}>Libraries</NavLink></li>} 
+         { dataCtx.user.role === "librarian" && <li><NavLink to="/members" className={({ isActive }) => isActive ? 'text-blue-400' : ''}>Members</NavLink></li>} 
 
           <li className="relative">
             {!dataCtx.user.email ? (

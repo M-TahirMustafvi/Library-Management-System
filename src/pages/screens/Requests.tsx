@@ -1,9 +1,8 @@
 import { useContext } from "react";
 
 import { DataContext } from "../../store/data-context";
-import Reader from "../../components/Home/Reader";
-import Librarian from "../../components/Home/Librarian";
-import Admin from "../../components/Home/Admin";
+import Reader from "../../components/Requests/Reader";
+import Admin from "../../components/Requests/Admin";
 
 const Requests: React.FC = () => {
   const { user: { role } } = useContext(DataContext);

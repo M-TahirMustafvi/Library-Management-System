@@ -13,7 +13,7 @@ export default function Reader() {
   return (
     <div className={DashboardStyles.container}>
       <h1 className={DashboardStyles.title}>
-        Welcome, {user.email.substring(0, user.email.indexOf('@'))}! in {user.library}
+        Welcome, {user.email}! in {user.library}
       </h1>
 
       <h2 className="text-2xl font-bold text-white mb-4">

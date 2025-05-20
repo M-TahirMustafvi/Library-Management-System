@@ -5,6 +5,7 @@ import Reader from "../../components/Home/Reader";
 import Librarian from "../../components/Home/Librarian";
 import Admin from "../../components/Home/Admin";
 
+
 export function HomePage() {
   const dataCtx = useContext(DataContext);
   const role = dataCtx.user.role?.trim().toLowerCase();
@@ -13,8 +14,7 @@ export function HomePage() {
     <>
       {(role === "admin" && <Admin />) ||
         ((role === "librarian") && <Librarian />) ||
-        (role === "reader" && <Reader />) || 
-        <p>Please Sign in first.</p>}
+        (role === "reader" && <Reader />)}
     </>
   );
 }

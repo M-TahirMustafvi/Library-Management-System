@@ -1,4 +1,4 @@
-import { useRef, useState, useContext } from 'react';
+import { useRef, useState, useContext, useReducer } from 'react';
 import { useNavigate } from "react-router-dom";
 import { authFormStyles } from '../../styles/library-styles';
 import { DataContext } from '../../store/data-context';
@@ -11,8 +11,22 @@ const SignupForm: React.FC<{ onLogin: () => void }> = (props) => {
   const [pwdWarning, setPwdWarning] = useState<boolean>(false);
   const [emailWarning, setEmailWarning] = useState<boolean>(false);
   const [libraryWarning, setLibraryWarning] = useState<boolean>(false);
-
   const navigate = useNavigate();
+  
+
+  // const initalValue = {
+
+  // }
+
+  // const reducer = (state, action) => {
+
+  // }
+
+  // const [state, dispatch] = useReducer(reducer, initialValue); 
+
+
+
+
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();

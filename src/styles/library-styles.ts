@@ -24,8 +24,15 @@ export const BooksStyles = {
   thead: "bg-gray-700 text-white",
   th: "text-left py-2 px-4",
   tr: "border-b hover:bg-gray-600 cursor-pointer",
-  td: "py-2 px-4",
+  td: "py-2 px-2",
   input: "px-4 py-2 bg-gray-700 border border-gray-600 rounded-md text-white",
   button: "bg-blue-600 hover:bg-blue-700 ml-5 text-white font-semibold py-2 px-4 rounded-md transition-colors cursor-pointer",
   searchWrapper: "flex items-center justify-between mb-4"
+};
+
+export const ModalStyles = {
+  container: "fixed inset-0 backdrop-blur-md backdrop-brightness-50 flex justify-center items-center z-50",
+  modal: "w-1/2 md:w-100 bg-gray-800 rounded",
+  title: "text-2xl font-bold text-white mb-4 text-center",
+
 };

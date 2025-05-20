@@ -35,6 +35,7 @@ export class Books {
     }
   }
   
+  
   export class User {
     id: string;
     email: string;
@@ -42,11 +43,12 @@ export class Books {
     role?: string;
     library?: string;
   
-    constructor(email: string, password: string, role: string = 'reader') {
+    constructor({email, password, role = 'reader', library}: {email: string; password: string; role?: string, library?: string}) {
       this.id = generateUUID();
       this.email = email;
       this.password = password;
       this.role = role;
+      this.library = library;
     }
   }
   
@@ -69,15 +71,15 @@ export class Books {
 
   export class Requests {
     id: string;
-    bookId: string;
-    userId: string;
+    bookName: string;   //Just to avoid bookId lookup, as we are not focused on DB
+    userEmail: string;
     requestDate: Date;
     requestStatus?: string;
   
-    constructor(bookId: string, userId: string) {
+    constructor(bookName: string, userEmail: string) {
       this.id = generateUUID();
-      this.bookId = bookId;
-      this.userId = userId;
+      this.bookName = bookName;
+      this.userEmail = userEmail;
       this.requestDate = new Date();
       this.requestStatus = "submitted";
     }

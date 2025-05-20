@@ -13,17 +13,17 @@ export default function Librarian() {
   const getLibraryStats = (library: Library) => {
     const books: Books[] = library.books || [];
     const members = userArray.filter((u) => u.library === library.id);
-
-    const issuedBooks = books.filter((book) => book.isIssued).length;
-    const availableBooks = books.filter((book) => !book.isIssued).length;
+    
+    // const issuedBooks = data.issuedBooks.filter((book) => book.isIssued).length;
+    // const availableBooks = books.filter((book) => !book.isIssued).length;
 
     return {
       totalBooks: books.length,
-      issuedBooks,
-      availableBooks,
-      issuedPercentage: books.length
-        ? ((issuedBooks / books.length) * 100).toFixed(2)
-        : "0.00",
+      // issuedBooks,
+      // availableBooks,
+      // issuedPercentage: books.length
+      //   ? ((issuedBooks / books.length) * 100).toFixed(2)
+      //   : "0.00",
       membersCount: members.length,
     };
   };
@@ -55,7 +55,7 @@ export default function Librarian() {
                 <p className={DashboardStyles.cardContent}>
                 Total Books: {stats.totalBooks}
                 </p>
-                <p className={DashboardStyles.cardContent}>
+                {/* <p className={DashboardStyles.cardContent}>
                 Issued Books: {stats.issuedBooks}
                 </p>
                 <p className={DashboardStyles.cardContent}>
@@ -63,7 +63,7 @@ export default function Librarian() {
                 </p>
                 <p className={DashboardStyles.cardContent}>
                 Issued %: {stats.issuedPercentage}%
-                </p>
+                </p> */}
                 <p className={DashboardStyles.cardContent}>
                 Total Members: {stats.membersCount}
                 </p>

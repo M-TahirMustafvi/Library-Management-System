@@ -1,4 +1,3 @@
-// components/ModalForm.tsx
 import React, { useState } from "react";
 import { Books } from "../../types/Lib_Types";
 import { BooksStyles } from "../../styles/library-styles";
@@ -17,10 +16,11 @@ const ModalForm: React.FC<Props> = ({ book, onClose, onSave }) => {
   const [author, setAuthor] = useState(book?.author || "");
   const [quantity, setQuantity] = useState(book?.quantity || 1);
 
-  const handleSubmit = () => {
-    const updated = new Books(title, author, quantity);
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault(); // Prevent default HTML form submission behavior
 
-    // If editing, preserve ID and availability
+    const updated = new Books(title.trim(), author.trim(), quantity);
+
     if (isEditMode && book) {
       updated.id = book.id;
       updated.isAvailable = book.isAvailable;
@@ -34,7 +34,10 @@ const ModalForm: React.FC<Props> = ({ book, onClose, onSave }) => {
 
   return (
     <div className="fixed inset-0 backdrop-blur-md backdrop-brightness-50 flex justify-center items-center z-50">
-      <div className="bg-gray-600 p-6 rounded w-95 shadow-lg">
+      <form
+        onSubmit={handleSubmit}
+        className="bg-gray-600 p-6 rounded w-95 shadow-lg"
+      >
         <h2 className="text-xl font-bold mb-4">
           {isEditMode ? "Edit Book" : "Add Book"}
         </h2>
@@ -46,6 +49,7 @@ const ModalForm: React.FC<Props> = ({ book, onClose, onSave }) => {
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             placeholder="Title"
+            required
           />
         </div>
 
@@ -56,6 +60,7 @@ const ModalForm: React.FC<Props> = ({ book, onClose, onSave }) => {
             value={author}
             onChange={(e) => setAuthor(e.target.value)}
             placeholder="Author"
+            required
           />
         </div>
 
@@ -67,18 +72,20 @@ const ModalForm: React.FC<Props> = ({ book, onClose, onSave }) => {
             value={quantity}
             onChange={(e) => setQuantity(Number(e.target.value))}
             placeholder="Quantity"
+            required
+            min={1}
           />
         </div>
 
         <div className="flex justify-end gap-2 mt-4">
-          <button className={BooksStyles.button} onClick={handleSubmit}>
+          <button type="submit" className={BooksStyles.button}>
             {isEditMode ? "Save Changes" : "Add Book"}
           </button>
-          <button className={BooksStyles.button} onClick={onClose}>
+          <button type="button" className={BooksStyles.button} onClick={onClose}>
             Cancel
           </button>
         </div>
-      </div>
+      </form>
     </div>
   );
 };
